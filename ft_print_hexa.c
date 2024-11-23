@@ -6,7 +6,7 @@
 /*   By: okhourss <okhourss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:03:28 by okhourss          #+#    #+#             */
-/*   Updated: 2024/11/20 09:50:30 by okhourss         ###   ########.fr       */
+/*   Updated: 2024/11/21 09:10:46 by okhourss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	ft_print_hexa(char format, unsigned int x)
 {
-	int	count;
+	int	written_chars;
 
-	count = 0;
+	written_chars = 0;
 	if (format == 'x')
-		count += ft_to_base_16_lowercase(x);
+		written_chars += ft_print_hex_lower(x);
 	else if (format == 'X')
-		count += ft_to_base_16_uppercase(x);
-	if (count < 0)
+		written_chars += ft_print_hex_upper(x);
+	if (written_chars < 0)
 		return (-1);
-	return (count);
+	return (written_chars);
 }

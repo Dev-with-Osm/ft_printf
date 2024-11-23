@@ -6,7 +6,7 @@
 /*   By: okhourss <okhourss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:28:51 by okhourss          #+#    #+#             */
-/*   Updated: 2024/11/23 20:59:15 by okhourss         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:43:59 by okhourss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 int	ft_check_specifier(char format, va_list args)
 {
-	int	count;
+	int	written_chars;
 
-	count = 0;
+	written_chars = 0;
 	if (format == 's')
-		count += ft_putstr(va_arg(args, char *));
+		written_chars += ft_putstr(va_arg(args, char *));
 	else if (format == 'c')
-		count += ft_putchar((char)va_arg(args, int));
+		written_chars += ft_putchar((char)va_arg(args, int));
 	else if (format == 'd' || format == 'i')
-		count += ft_putnbr(va_arg(args, int));
+		written_chars += ft_putnbr(va_arg(args, int));
 	else if (format == 'x' || format == 'X')
-		count += ft_print_hexa(format, va_arg(args, int));
+		written_chars += ft_print_hexa(format, va_arg(args, int));
 	else if (format == 'p')
-		count += ft_print_p(va_arg(args, void *));
+		written_chars += ft_print_p(va_arg(args, void *));
 	else if (format == 'u')
-		count += ft_print_u(va_arg(args, unsigned int));
+		written_chars += ft_print_u(va_arg(args, unsigned int));
 	else if (format == '%')
-		count += ft_putchar('%');
+		written_chars += ft_putchar('%');
 	else
-		ft_putchar(format);
-	if (count < 0)
+		written_chars += ft_putchar(format);
+	if (written_chars < 0)
 		return (-1);
-	return (count);
+	return (written_chars);
 }

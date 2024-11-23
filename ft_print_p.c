@@ -12,29 +12,29 @@
 
 #include "ft_printf.h"
 
-static int	to_base_16(unsigned long x)
+static int	convert_to_hex(unsigned long x)
 {
-	int	count;
+	int	written_chars;
 
-	count = 0;
+	written_chars = 0;
 	if (x >= 16)
-		count += to_base_16(x / 16);
-	count += ft_putchar("0123456789abcdef"[x % 16]);
-	if (count < 0)
+		written_chars += convert_to_hex(x / 16);
+	written_chars += ft_putchar("0123456789abcdef"[x % 16]);
+	if (written_chars < 0)
 		return (-1);
-	return (count);
+	return (written_chars);
 }
 
 int	ft_print_p(void *p)
 {
 	unsigned long	ads;
-	int				count;
+	int				written_chars;
 
-	count = 0;
+	written_chars = 0;
 	ads = (unsigned long) p;
-	count += ft_putstr("0x");
-	count += to_base_16(ads);
-	if (count < 0)
+	written_chars += ft_putstr("0x");
+	written_chars += convert_to_hex(ads);
+	if (written_chars < 0)
 		return (-1);
-	return (count);
+	return (written_chars);
 }

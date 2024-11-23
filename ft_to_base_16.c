@@ -6,34 +6,34 @@
 /*   By: okhourss <okhourss@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:51:48 by okhourss          #+#    #+#             */
-/*   Updated: 2024/11/20 09:51:22 by okhourss         ###   ########.fr       */
+/*   Updated: 2024/11/21 09:10:33 by okhourss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_to_base_16_lowercase(unsigned int x)
+int	ft_print_hex_lower(unsigned int x)
 {
-	int	count;
+	int	written_chars;
 
-	count = 0;
+	written_chars = 0;
 	if (x >= 16)
-		count += ft_to_base_16_lowercase(x / 16);
-	count += ft_putchar("0123456789abcdef"[x % 16]);
-	if (count < 0)
+		written_chars += ft_print_hex_lower(x / 16);
+	written_chars += ft_putchar("0123456789abcdef"[x % 16]);
+	if (written_chars < 0)
 		return (-1);
-	return (count);
+	return (written_chars);
 }
 
-int	ft_to_base_16_uppercase(unsigned int x)
+int	ft_print_hex_upper(unsigned int x)
 {
-	int	count;
+	int	written_chars;
 
-	count = 0;
+	written_chars = 0;
 	if (x >= 16)
-		count += ft_to_base_16_uppercase(x / 16);
-	count += ft_putchar("0123456789ABCDEF"[x % 16]);
-	if (count < 0)
+		written_chars += ft_print_hex_upper(x / 16);
+	written_chars += ft_putchar("0123456789ABCDEF"[x % 16]);
+	if (written_chars < 0)
 		return (-1);
-	return (count);
+	return (written_chars);
 }

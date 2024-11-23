@@ -14,13 +14,13 @@
 
 int	ft_print_u(unsigned int num)
 {
-	int	count;
+	int	written_chars;
 
-	count = 0;
+	written_chars = 0;
 	if (num > 9)
-		count += ft_putnbr(num / 10);
-	count += ft_putchar(num % 10 + 48);
-	if (count < 0)
+		written_chars += ft_putnbr(num / 10);
+	written_chars += ft_putchar(num % 10 + 48);
+	if (written_chars < 0)
 		return (-1);
-	return (count);
+	return (written_chars);
 }
